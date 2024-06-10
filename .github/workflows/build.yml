@@ -9,6 +9,10 @@ jobs:
   build:
     runs-on: windows-latest
 
+    defaults:
+      run:
+        shell: bash
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -20,10 +24,6 @@ jobs:
 
       - name: Install Poetry
         uses: snok/install-poetry@v1
-
-      - name: Add Poetry to PATH, again
-        shell: powershell
-        run: Add-Content $env:GITHUB_PATH "%APPDATA%\Python\Scripts"
 
       - name: Install dependencies
         run: |
