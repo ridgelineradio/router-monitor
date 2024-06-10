@@ -31,11 +31,11 @@ jobs:
         run: echo "%APPDATA%\Python\Scripts" >> $GITHUB_PATH
 
       - name: Install dependencies
-        run: poetry install
+        run: %APPDATA%\pypoetry install
 
       - name: Build executable with PyInstaller
         run: |
-          poetry run pyinstaller --onefile main.py
+          %APPDATA%\pypoetry run pyinstaller --onefile main.py
 
       - name: Archive build artifacts
         uses: actions/upload-artifact@v3
