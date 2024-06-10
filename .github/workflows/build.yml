@@ -28,7 +28,7 @@ jobs:
         #   $env:Path += ";$env:APPDATA\Python\Scripts"
         #   echo "::add-path::$env:APPDATA\Python\Scripts"
       - name: Add Poetry to PATH
-        run: echo "%APPDATA%\Python\Scripts" >> $GITHUB_ENV
+        run: echo "%APPDATA%\Python\Scripts" >> $GITHUB_PATH
 
       - name: Install dependencies
         run: poetry install
