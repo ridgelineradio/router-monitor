@@ -28,6 +28,10 @@ jobs:
         # run: $env.Path += ";%APPDATA%\Python\Scripts"
         run: echo "%APPDATA%\Python\Scripts" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
 
+      - name: Add Poetry to PATH, again
+        shell: powershell
+        run: Add-Content $env:GITHUB_PATH "%APPDATA%\Python\Scripts"
+
       - name: Install dependencies
         run: |
           poetry install
