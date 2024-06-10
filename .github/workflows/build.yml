@@ -22,9 +22,13 @@ jobs:
         run: |
           (Invoke-WebRequest -Uri https://install.python-poetry.org -UseBasicParsing).Content | python -
 
+      # - name: Add Poetry to PATH
+      #   shell: powershell
+      #   run: |
+      #     $Env:Path += ";C:\Users\YourUserName\AppData\Roaming\Python\Scripts"; setx PATH "$Env:Path"
+      #     set PATH=%PATH%;%APPDATA%\pypoetry\venv\Scripts\poetry
       - name: Add Poetry to PATH
-        run: |
-          set PATH=%PATH%;%APPDATA%\pypoetry\venv\Scripts\poetry
+        run: echo "$env:%APPDATA%\Python\Scripts" >> $GITHUB_ENV
 
       - name: Install dependencies
         run: poetry install
