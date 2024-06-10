@@ -19,14 +19,7 @@ jobs:
           python-version: '3.12'
 
       - name: Install Poetry
-        run: |
-          (Invoke-WebRequest -Uri https://install.python-poetry.org -UseBasicParsing).Content | python -
-
-      - name: Add Poetry to PATH
-        shell: powershell
-        # run: echo "PATH=$env:APPDATA\Python\Scripts:$env:PATH" >> $env:GITHUB_ENV
-        # run: $env.Path += ";%APPDATA%\Python\Scripts"
-        run: echo "%APPDATA%\Python\Scripts" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+        uses: snok/install-poetry@v1
 
       - name: Add Poetry to PATH, again
         shell: powershell
