@@ -32,11 +32,11 @@ jobs:
 
       - name: Install dependencies
         run: |
-          %APPDATA%\pypoetry install
+          pypoetry install
 
       - name: Build executable with PyInstaller
         run: |
-          %APPDATA%\pypoetry run pyinstaller --onefile main.py
+          pypoetry run pyinstaller --onefile main.py
 
       - name: Archive build artifacts
         uses: actions/upload-artifact@v3
