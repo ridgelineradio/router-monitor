@@ -31,7 +31,8 @@ jobs:
         run: echo "%APPDATA%\Python\Scripts" >> $GITHUB_PATH
 
       - name: Install dependencies
-        run: %APPDATA%\pypoetry install
+        run: |
+          %APPDATA%\pypoetry install
 
       - name: Build executable with PyInstaller
         run: |
