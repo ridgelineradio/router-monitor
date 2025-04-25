@@ -1,23 +1,19 @@
-[tool.poetry]
+[project]
 name = "router-monitor"
 version = "0.1.0"
-description = ""
-authors = ["Jake Wood <jake@ridgelineradio.org>"]
-license = "MIT"
+description = "Add your description here"
 readme = "README.md"
-package-mode = false
+requires-python = ">=3.13"
+dependencies = [
+    "json-rpc>=1.15.0",
+    "passlib>=1.7.4",
+    "pydantic>=2.11.3",
+    "python-glinet>=0.7.0",
+    "pywin32>=310",
+    "requests>=2.32.3",
+]
 
-[tool.poetry.dependencies]
-python = "3.12.3"
-python-glinet = "^0.7.0"
-json-rpc = "^1.15.0"
-requests = "^2.32.3"
-pydantic = "^2.7.3"
-passlib = "^1.7.4"
-
-[tool.poetry.group.dev.dependencies]
-pyinstaller = "^6.7.0"
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+[dependency-groups]
+dev = [
+    "pyinstaller>=6.13.0",
+]
