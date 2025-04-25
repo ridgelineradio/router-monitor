@@ -11,6 +11,11 @@ from glinet import GlInetClient
 from rpc import RPCUnauthorized
 
 
+def get_data_path(filename: str) -> str:
+    exe_dir = os.path.dirname(sys.executable)
+    return os.path.join(exe_dir, filename)
+
+
 class RouterMonitorService(win32serviceutil.ServiceFramework):
     _svc_name_ = "RouterMonitor"
     _svc_display_name_ = "Router Monitor Service"
@@ -36,22 +41,13 @@ class RouterMonitorService(win32serviceutil.ServiceFramework):
         self.main()
 
     def main(self):
-        # Get the base directory (where the executable is located when packaged with PyInstaller)
-        if getattr(sys, 'frozen', False):
-            # If the application is run as a bundle, the PyInstaller bootloader
-            # extends the sys module by a flag frozen=True and sets the app 
-            # path into variable _MEIPASS.
-            base_dir = sys._MEIPASS
-        else:
-            base_dir = os.path.dirname(os.path.abspath(__file__))
-
         # Load config from the same directory as the executable
-        config_path = os.path.join(base_dir, "config.json")
+        config_path = get_data_path("config.json")
         with open(config_path, "r") as d:
             config_json = json.loads(d.read())
 
         password = config_json["password"]
-        log_path = config_json.get("log_file", os.path.join(base_dir, "log.txt"))
+        log_path = config_json.get("log_file", get_data_path("log.txt"))
 
         client = GlInetClient()
         client.login(password)
