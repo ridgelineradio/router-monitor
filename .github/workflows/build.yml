@@ -26,7 +26,7 @@ jobs:
 
       - name: Install dependencies with uv (from pyproject.toml)
         run: |
-          uv sync
+          uv sync --dev
 
       - name: Build executable with PyInstaller
         run: |
