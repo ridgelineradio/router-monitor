@@ -30,7 +30,7 @@ jobs:
 
       - name: Build executable with PyInstaller
         run: |
-          pyinstaller --onefile --name=router_monitor main.py
+          uv run pyinstaller --onefile --name=router_monitor main.py
 
       - name: Archive build artifacts
         uses: actions/upload-artifact@v4
