@@ -1,3 +1,6 @@
 __pycache__
 log.txt
 .DS_Store
+config.json
+build/
+dist/

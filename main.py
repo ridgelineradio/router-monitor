@@ -12,6 +12,7 @@ log_path = config_json.get("log_file", "log.txt")
 
 client = GlInetClient()
 client.login(password)
+print("Logged in!")
 
 while True:
     system_status = client.get_system_status()
